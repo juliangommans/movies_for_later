@@ -1,7 +1,7 @@
 do (Marionette) ->
   _.extend Marionette.Renderer,
 
-    lookups: ['home/apps/']
+    lookups: ['backbone/apps/']
 
     render: (template, data) ->
       path = @getTemplate(template)

@@ -2,8 +2,8 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require lib/underscore
-//= require lib/backbone
-//= require lib/marionette
+// = require lib/backbone
+// = require lib/marionette
 //= require js-routes
 //= require turbolinks
 //= require_tree ./backbone/config
