@@ -1,5 +1,7 @@
 Home?
 <div class='search-box'>
-  <input type='text' name='search'>
+  <input id='search-box' type='text' name='search' placeholder='enter words'>
+  <button id='search-button' type='button' class='btn'>Search</button>
 </div>
-<button id='search-button' type='button' class='btn'>Search</button>
+</br>
+<button id='save-button' type='button' class='btn'>S(h)ave</button>

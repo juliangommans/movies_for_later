@@ -8,16 +8,37 @@
         @showView()
       @show @layout
 
-    getLayout: ->
-      new Show.Layout
-
     showView: ->
       showView = @getShowView()
-
-      @listenTo showView, 'start:search', (args) ->
-        console.log "ARGS and VIEW", args
+      @listenTo showView, 'start:search', @search
+      @listenTo showView, 'save:movies', @saveMoviesToDb
 
       @layout.showRegion.show showView
+
+    saveMoviesToDb: ->
+      newMovie = App.request 'new:movie:entity'
+      movie = @results.models[4]
+
+      newMovie = @filterMovieData(newMovie, movie)
+      console.log "newMovie fetched movie", newMovie, movie
+
+      newMovie.save()
+
+    search: ->
+      query = $('#search-box').val()
+      params =
+        url: 'search/movie'
+        query: query
+
+      console.log "query and params", query, params
+
+      @results = App.request 'external:movie:entities', params
+
+      App.execute "when:fetched", @results, =>
+        console.log "results IS NOW +++>", @results
+
+    getLayout: ->
+      new Show.Layout
 
     getShowView: ->
       new Show.Home
