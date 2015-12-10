@@ -3,7 +3,6 @@
   class Show.Controller extends App.Controllers.Base
 
     initialize: ->
-      console.log "DO SOMETHING"
       @layout = @getLayout()
       @listenTo @layout, 'show', =>
         @showView()
