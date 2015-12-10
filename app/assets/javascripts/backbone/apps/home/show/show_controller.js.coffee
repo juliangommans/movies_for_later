@@ -13,6 +13,10 @@
 
     showView: ->
       showView = @getShowView()
+
+      @listenTo showView, 'start:search', (args) ->
+        console.log "ARGS and VIEW", args
+
       @layout.showRegion.show showView
 
     getShowView: ->
