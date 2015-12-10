@@ -16,13 +16,11 @@
       @layout.showRegion.show showView
 
     saveMoviesToDb: ->
-      newMovie = App.request 'new:movie:entity'
-      movie = @results.models[4]
-
-      newMovie = @filterMovieData(newMovie, movie)
-      console.log "newMovie fetched movie", newMovie, movie
-
-      newMovie.save()
+      @results.each( (movie) ->
+        newMovie = App.request 'new:movie:entity'
+        newMovie.filterMovieData(movie)
+        newMovie.save()
+        )
 
     search: ->
       query = $('#search-box').val()

@@ -39,16 +39,3 @@
         App.execute "show:loading", view, options
       else
         options.region.show view
-
-    filterMovieData: (newMovie, oldMovie) ->
-      newMovie.set
-        name: oldMovie.get('title')
-        description: oldMovie.get('overview')
-        genre_ids: oldMovie.get('genre_ids')
-        release_date: oldMovie.get('release_date')
-        api_id: oldMovie.get('id')
-        poster: oldMovie.get('poster_path')
-        backdrop: oldMovie.get('backdrop_path')
-        vote_count: oldMovie.get('vote_count')
-        vote_average: oldMovie.get('vote_average')
-      newMovie

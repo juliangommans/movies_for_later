@@ -34,3 +34,17 @@
 
     saveError: (model, xhr, options) ->
       @set _errors: $.parseJSON(xhr.responseText)?.errors unless xhr.status is 500 or xhr.status is 404
+
+#### Movie Methods
+
+    filterMovieData: (oldMovie) ->
+      @set
+        name: oldMovie.get('title')
+        description: oldMovie.get('overview')
+        genre_ids: oldMovie.get('genre_ids')
+        release_date: oldMovie.get('release_date')
+        api_id: oldMovie.get('id')
+        poster: oldMovie.get('poster_path')
+        backdrop: oldMovie.get('backdrop_path')
+        vote_count: oldMovie.get('vote_count')
+        vote_average: oldMovie.get('vote_average')

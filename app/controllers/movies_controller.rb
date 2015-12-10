@@ -5,11 +5,11 @@ class MoviesController < ApplicationController
   def create
     if check_validity
       @movie = Movies::CreateMovie.call(params)
-      render 'home/show'
+
     else
       puts '########%%%%%%%%%%%%%&&&&&&&&&&'
       puts '########%%%%%%%%%%%%%&&&&&&&&&&'
-      render 'home/show'
+
     end
   end
 

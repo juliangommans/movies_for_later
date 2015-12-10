@@ -18,7 +18,11 @@ class Movies::MovieDecorator
   end
 
   def assign_genres
-    # movie.genre_ids = params[:genre_ids]
+    params[:genre_ids].each do |g|
+      genre = Genre.find_by(genre_id: g)
+      x = MovieGenre.new(movie_id: movie.id, genre_id: genre.id)
+      x.save
+    end
   end
 
   def save!
