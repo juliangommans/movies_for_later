@@ -12,11 +12,9 @@ class Movies::CreateMovie
 
   def call
     decorator.assign_safe_params
-    decorator.assign_images
     decorator.assign_release_year
-    decorator.assign_genres
-    decorator.assign_api_id
     decorator.save!
+    decorator.assign_genres
   end
 
 end

@@ -1,0 +1,15 @@
+<div class='dropdown'>
+  <button data-toggle='dropdown' class='btn dropdown-toggle'>Your Account</button>
+  <ul class='dropdown-menu'>
+    <li>
+      <a href='#' class='sign-up'>sign up</a>
+    </li>
+    <li>
+      <a href='#' class='sign-in'>sign in</a>
+    </li>
+    <li clasS='divider'></li>
+    <li>
+      <a href='#' class='sign-out'>sign out</a>
+    </li>
+  </ul>
+</div>

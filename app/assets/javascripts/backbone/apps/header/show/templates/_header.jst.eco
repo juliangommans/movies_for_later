@@ -1,0 +1,8 @@
+<div class='container'>
+  <div class='jumbotron'>
+    <h1>Movies For Later</h1>
+    <p>Find, save, rate movies you plan to watch later. A consice place to make a list so you don't forget those movies you wanted to watch, however long ago.</p>
+    <div id='account-options'>
+    </div>
+  </div>
+</div>

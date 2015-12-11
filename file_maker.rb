@@ -412,7 +412,7 @@ end"
   def views_layout
     "@#{@title}.module 'Views', (Views, App, Backbone, Marionette, $, _) ->
 
-  class Views.Layout extends Marionette.Layout"
+  class Views.Layout extends Marionette.LayoutView"
   end
 
   def views_view
@@ -735,13 +735,13 @@ end
 
 options = {
   title: "MoviesForLater",
-  appname: "home",
+  appname: "footer",
   branchname: "show",
-  routable: true,
+  routable: false,
   custom: "/backbone"
 }
 
 x = BBMbuilder.new(options)#"PlanetExpress", "#{@appname}", "edit", false, "backbone/apps/")
 # x.rails_setup
-x.initial_setup
-# x.constructor
+# x.initial_setup
+x.constructor

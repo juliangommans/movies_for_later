@@ -8,16 +8,37 @@
         @showView()
       @show @layout
 
-    getLayout: ->
-      new Show.Layout
-
     showView: ->
       showView = @getShowView()
+      @listenTo showView, 'start:search', @search
+      @listenTo showView, 'save:movies', @saveMoviesToDb
+      @layout.homeRegion.show showView
 
-      @listenTo showView, 'start:search', (args) ->
-        console.log "ARGS and VIEW", args
+    saveMoviesToDb: ->
+      @results.each( (movie) ->
+        newMovie = App.request 'new:movie:entity'
+        newMovie.filterMovieData(movie)
+        newMovie.save()
+        )
 
-      @layout.showRegion.show showView
+    search: ->
+      query = $('#search-box').val()
+      params =
+        url: 'search/movie'
+        query: query
+
+      console.log "query and params", query, params
+
+      @results = App.request 'external:movie:entities', params
+
+      App.execute "when:fetched", @results, =>
+        test = @results.models[0].getImageUrl(type: "backdrop", size: "medium")
+        console.log "image IS NOW +++>", @results
+        $('.img-test').append("<img src=#{test}></img>")
+
+
+    getLayout: ->
+      new Show.Layout
 
     getShowView: ->
       new Show.Home
