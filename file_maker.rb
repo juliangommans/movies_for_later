@@ -735,9 +735,9 @@ end
 
 options = {
   title: "MoviesForLater",
-  appname: "movie",
+  appname: "footer",
   branchname: "show",
-  routable: true,
+  routable: false,
   custom: "/backbone"
 }
 
