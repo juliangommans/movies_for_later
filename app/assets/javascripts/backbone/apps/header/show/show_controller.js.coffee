@@ -4,16 +4,25 @@
 
     initialize: ->
       @layout = @getLayout()
-      @listenTo @layout, 'show', =>
+      @listenTo @layout, 'show', ->
         @showView()
       @show @layout
+
+    showView: ->
+      showView = @getShowView()
+      @listenTo showView, 'show', ->
+        @showAccountView(showView)
+      @layout.showRegion.show showView
+
+    showAccountView: (view) ->
+      showAccountView = @getAccountView()
+      view.accountRegion.show showAccountView
 
     getLayout: ->
       new Show.Layout
 
-    showView: ->
-      showView = @getShowView()
-      @layout.showRegion.show showView
-
     getShowView: ->
       new Show.Header
+
+    getAccountView: ->
+      new Show.Account

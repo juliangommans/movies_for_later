@@ -15,4 +15,4 @@
   class Show.Layout extends App.Views.Layout
     template: 'home/show/show_layout'
     regions:
-      showRegion: '#show-region'
+      homeRegion: '#home-region'

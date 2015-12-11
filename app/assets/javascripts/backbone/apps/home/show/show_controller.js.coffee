@@ -12,8 +12,7 @@
       showView = @getShowView()
       @listenTo showView, 'start:search', @search
       @listenTo showView, 'save:movies', @saveMoviesToDb
-
-      @layout.showRegion.show showView
+      @layout.homeRegion.show showView
 
     saveMoviesToDb: ->
       @results.each( (movie) ->
@@ -33,7 +32,10 @@
       @results = App.request 'external:movie:entities', params
 
       App.execute "when:fetched", @results, =>
-        console.log "results IS NOW +++>", @results
+        test = @results.models[0].getImageUrl(type: "backdrop", size: "medium")
+        console.log "image IS NOW +++>", @results
+        $('.img-test').append("<img src=#{test}></img>")
+
 
     getLayout: ->
       new Show.Layout

@@ -9,4 +9,4 @@
   class Show.Layout extends App.Views.Layout
     template: 'footer/show/show_layout'
     regions:
-      showRegion: '#show-region'
+      showRegion: '#footer-show-region'
