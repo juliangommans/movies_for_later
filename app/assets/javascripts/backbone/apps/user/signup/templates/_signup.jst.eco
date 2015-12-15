@@ -1,0 +1,22 @@
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Sign up here</h4>
+      </div>
+      <div class="modal-body">
+        <form id='signup-form'>
+          <label>Email</label>
+          <input id='email-sign-up' type='text' name='email' placeholder='email address'></input>
+          <br>
+          <label>Password</label>
+          <input id='password-sign-up' type='password' name='password' placeholder='password'></input>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn submit-button btn-default">Sign Up</button>
+        <button type="button" class="btn cancel-button btn-default">Close</button>
+      </div>
+    </div>
+
+  </div>

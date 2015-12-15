@@ -7,7 +7,7 @@
     <li>
       <a href='#' class='sign-in'>sign in</a>
     </li>
-    <li clasS='divider'></li>
+    <li class='divider'></li>
     <li>
       <a href='#' class='sign-out'>sign out</a>
     </li>

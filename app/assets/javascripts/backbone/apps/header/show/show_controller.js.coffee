@@ -16,6 +16,10 @@
 
     showAccountView: (view) ->
       showAccountView = @getAccountView()
+      @listenTo showAccountView, 'show:user:signup', ->
+        console.log "YOU CLICKED SIGN UP"
+        App.execute 'user:signup'
+
       view.accountRegion.show showAccountView
 
     getLayout: ->
