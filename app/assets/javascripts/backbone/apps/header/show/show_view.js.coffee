@@ -7,6 +7,8 @@
 
   class Show.Account extends App.Views.ItemView
     template: 'header/show/_account_options'
+    triggers:
+      'click .sign-up': 'show:user:signup'
 
   class Show.Layout extends App.Views.Layout
     template: 'header/show/show_layout'

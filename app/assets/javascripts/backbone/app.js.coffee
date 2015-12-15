@@ -7,6 +7,7 @@
 
   App.addRegions
     headerRegion: '#header-region'
+    modalRegion: '#modal'
     mainRegion: '#main-region'
     footerRegion: '#footer-region'
 
@@ -28,5 +29,6 @@
   App.on 'start', ->
     @startHistory()
     @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
+
 
   App
