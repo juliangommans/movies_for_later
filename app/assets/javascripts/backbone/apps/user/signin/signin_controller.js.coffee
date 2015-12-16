@@ -3,17 +3,13 @@
   class Signin.Controller extends App.Controllers.Base
 
     initialize: ->
-      @layout = @getLayout()
-      @listenTo @layout, 'show', =>
-        @signinView()
-      @show @layout
+      console.log 'we are in the controller'
+      session = App.request 'user:session:entity'
+      App.execute 'when:fetched', session, =>
+        signinView = @getSigninView(session)
+        console.log "we have a session?", session
 
-    getLayout: ->
-      new Signin.Layout
+        App.modalRegion.show signinView
 
-    signinView: ->
-      signinView = @getSigninView()
-      @layout.signinRegion.show signinView
-
-    getSigninView: ->
-      new Signin.User
+    getSigninView: (session) ->
+      new Signin.User model: session

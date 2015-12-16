@@ -5,11 +5,6 @@ class MoviesController < ApplicationController
   def create
     if check_validity
       @movie = Movies::CreateMovie.call(params)
-
-    else
-      puts '########%%%%%%%%%%%%%&&&&&&&&&&'
-      puts '########%%%%%%%%%%%%%&&&&&&&&&&'
-
     end
   end
 

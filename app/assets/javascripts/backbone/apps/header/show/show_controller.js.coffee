@@ -8,17 +8,37 @@
         @showView()
       @show @layout
 
+      App.vent.on 'user:status:change', =>
+        @showView()
+
     showView: ->
       showView = @getShowView()
       @listenTo showView, 'show', ->
-        @showAccountView(showView)
+        @checkUserLoggedIn(showView)
+
       @layout.showRegion.show showView
 
-    showAccountView: (view) ->
-      showAccountView = @getAccountView()
-      @listenTo showAccountView, 'show:user:signup', ->
-        console.log "YOU CLICKED SIGN UP"
+    checkUserLoggedIn: (view) ->
+      checkUser = App.request 'user:entity'
+      checkUser.fetch()
+      App.execute "when:fetched", checkUser, =>
+        if checkUser.get 'logged_in'
+          @showAccountView(view, checkUser)
+        else
+          @showRegisterView(view, checkUser)
+
+    showRegisterView: (view, checkUser) ->
+      showRegisterView = @getRegisterView(checkUser)
+      @listenTo showRegisterView, 'show:user:signup', ->
         App.execute 'user:signup'
+
+      @listenTo showRegisterView, 'show:user:signin', ->
+        App.execute 'user:signin'
+
+      view.accountRegion.show showRegisterView
+
+    showAccountView: (view, checkUser) ->
+      showAccountView = @getAccountView(checkUser)
 
       view.accountRegion.show showAccountView
 
@@ -28,5 +48,8 @@
     getShowView: ->
       new Show.Header
 
-    getAccountView: ->
-      new Show.Account
+    getRegisterView: (checkUser) ->
+      new Show.Register model: checkUser
+
+    getAccountView: (checkUser) ->
+      new Show.Account model: checkUser
