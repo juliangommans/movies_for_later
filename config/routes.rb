@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get '/home', to: "home#show"
   root to: "home#index"
+
+  get '/home', to: "home#show"
+  get '/user', to: "user#show"
+
+  devise_for :users, controllers: {
+    registrations: "registrations",
+    sessions: "sessions"
+  }
 
   resources :movies
 end

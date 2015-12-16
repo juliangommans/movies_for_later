@@ -2,14 +2,14 @@
   <button data-toggle='dropdown' class='btn dropdown-toggle'>Your Account</button>
   <ul class='dropdown-menu'>
     <li>
-      <a href='#' class='sign-up'>sign up</a>
+      <a href='#' class='sign-up'>Your Movies</a>
     </li>
     <li>
-      <a href='#' class='sign-in'>sign in</a>
+      <a href='#' class='sign-in'>Edit Account</a>
     </li>
     <li class='divider'></li>
     <li>
-      <a href='#' class='sign-out'>sign out</a>
+      <a href='/users/sign_out' data-method='delete' class='sign-out'>Sign Out</a>
     </li>
   </ul>
 </div>

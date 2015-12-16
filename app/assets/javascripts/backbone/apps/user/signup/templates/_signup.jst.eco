@@ -6,11 +6,21 @@
       </div>
       <div class="modal-body">
         <form id='signup-form'>
-          <label>Email</label>
-          <input id='email-sign-up' type='text' name='email' placeholder='email address'></input>
-          <br>
-          <label>Password</label>
-          <input id='password-sign-up' type='password' name='password' placeholder='password'></input>
+          <div class='form-group'>
+            <label for='email-sign-up'>Email</label>
+            <input id='email-sign-up' type='text' name='email' class='form-control'></input>
+          </div>
+          <div class='form-group'>
+            <label for='password-sign-up'>Password</label>
+            <input id='password-sign-up' type='password' name='password' class='form-control'></input>
+          </div>
+          <div class='form-group'>
+            <label for='password-confirmation'>Password Confirmation</label>
+            <input id='password-confirmation' type='password' name='password_confirmation' class='form-control'></input>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="remember_me"> Remember me</label>
+          </div>
         </form>
       </div>
       <div class="modal-footer">

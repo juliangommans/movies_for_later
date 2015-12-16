@@ -3,17 +3,13 @@
   class Signout.Controller extends App.Controllers.Base
 
     initialize: ->
-      @layout = @getLayout()
-      @listenTo @layout, 'show', =>
-        @signoutView()
-      @show @layout
-
-    getLayout: ->
-      new Signout.Layout
-
-    signoutView: ->
-      signoutView = @getSignoutView()
-      @layout.signoutRegion.show signoutView
-
-    getSignoutView: ->
-      new Signout.User
+      $.ajax
+        url: '/users/sign_out'
+        settings:
+          async: false
+          method: 'DELETE'
+          success: ->
+            console.log "YAY SUCCESS"
+            App.vent.trigger 'user:status:change'
+          error: ->
+            console.log "well shit"
