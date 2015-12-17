@@ -1,5 +1,5 @@
 .dropdown-menu > li > a:hover {
-  background-color: yellow !important;
+  background-color: #ffeb3b !important;
 }
 
 .dropdown-menu {
@@ -8,4 +8,33 @@
 
 .divider {
   background-color: lightgray !important;
+}
+
+// carousel stuff
+
+.carousel {
+  margin: auto;
+  width: 780px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.carousel-caption {
+  text-shadow: 2px 0 0 black, -2px 0 0 black, 0 2px 0 black, 0 -2px 0 black, 1px 1px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black !important;
+}
+
+.carousel-images {
+  max-height: 439px;
+  max-width: 780px;
+  margin: auto;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+}
+
+.carousel-control {
+  border-radius: 10px;
+}
+
+h2 {
+  text-align: center;
 }

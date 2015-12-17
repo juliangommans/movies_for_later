@@ -48,6 +48,7 @@
         backdrop: oldMovie.get('backdrop_path')
         vote_count: oldMovie.get('vote_count')
         vote_average: oldMovie.get('vote_average')
+        context: oldMovie.get('context')
 
     getImageUrl: (options) ->
       options['url'] = 'http://image.tmdb.org/t/p/'
@@ -61,6 +62,7 @@
         small: 'w45'
         medium: 'w92'
         large: 'w185'
+        backdrop: 'w780'
       url = options.url + size[options.size]
       if @get('poster')?
         url += @get('poster')

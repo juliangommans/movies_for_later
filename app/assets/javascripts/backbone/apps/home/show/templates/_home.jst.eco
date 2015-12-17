@@ -6,4 +6,8 @@ Home?
 </br>
 <button id='save-button' type='button' class='btn'>S(h)ave</button>
 </br>
+<button id='upcoming-button' type='button' class='btn'>upcumming</button>
+</br>
+<button id='save-user-movie-button' type='button' class='btn'>user-movie-join</button>
+</br>
 <div class='img-test'></div>

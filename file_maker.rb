@@ -729,14 +729,13 @@ end
     API.new#{@capitolname}()"
   end
 
-
 end
 ########## ^^ REAL CODE ^^ ##############
 
 options = {
   title: "MoviesForLater",
-  appname: "user",
-  branchname: "signout",
+  appname: "user_movies",
+  branchname: "show",
   routable: true,
   custom: "/backbone"
 }

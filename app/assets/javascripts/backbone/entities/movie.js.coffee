@@ -16,10 +16,13 @@
       resp.results
 
   API =
-    getLocalMovies: ->
+    getLocalMovies: (options) ->
+      console.log "options??", options
       movies = new Entities.LocalMovieCollection
       movies.fetch
+        data: options
         reset: true
+      console.log movies
       movies
     getLocalMovie: (id) ->
       movie = new Entities.LocalMovie
@@ -42,11 +45,11 @@
         data: params
       movies
 
-  App.reqres.setHandler 'movie:entities', ->
-    API.getLocalMovies()
+  App.reqres.setHandler 'movie:entities', (options) ->
+    API.getLocalMovies(options)
 
   App.reqres.setHandler 'movie:entity', (id) ->
-    API.getLocalMovie id
+    API.getLocalMovie(id)
 
   App.reqres.setHandler 'new:movie:entity', ->
     API.newMovie()

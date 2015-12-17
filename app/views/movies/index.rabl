@@ -1,3 +1,3 @@
-object @movie
+collection @movies
 
 extends('movies/base')

@@ -11,7 +11,15 @@ class MoviesController < ApplicationController
   def show;end
 
   def index
-    @movies = Movie.all
+    if params[:context].present?
+      @movies = Movie.where(context: 'upcoming')
+    else
+      if current_user.present?
+        @movies = Movie.where()
+      else
+        @movies = Movie.all
+      end
+    end
   end
 
   def update
@@ -33,7 +41,7 @@ class MoviesController < ApplicationController
   end
 
   def vote_count_check
-    if params[:vote_count] < 10
+    if params[:vote_count] < 10 and params[:context] != 'upcoming'
       return false
     else
       return true
@@ -51,4 +59,5 @@ class MoviesController < ApplicationController
   def fetch_movie
     @movie = Movie.find(params[:id])
   end
+
 end

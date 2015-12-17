@@ -5,9 +5,13 @@
     ui:
       search: '#search-button'
       save: '#save-button'
+      upcoming: '#upcoming-button'
+      userMovie: '#save-user-movie-button'
     triggers:
       'click @ui.search': 'start:search'
       'click @ui.save': 'save:movies'
+      'click @ui.upcoming': 'get:upcoming'
+      'click @ui.userMovie': 'save:user:movie'
 
   class Show.Show extends App.Views.ItemView
     template: 'home/show/_show'
@@ -16,3 +20,4 @@
     template: 'home/show/show_layout'
     regions:
       homeRegion: '#home-region'
+      carouselRegion: '#carousel-region'

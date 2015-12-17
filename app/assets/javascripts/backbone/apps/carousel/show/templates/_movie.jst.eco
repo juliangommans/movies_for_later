@@ -1,0 +1,9 @@
+<% if @backdrop?: %>
+<img src="http://image.tmdb.org/t/p/w780<%= @backdrop %>" class='carousel-images'>
+<% else: %>
+<img src="http://image.tmdb.org/t/p/w342<%= @poster %>" class='carousel-images'>
+<% end %>
+<div class="carousel-caption">
+  <h3><%= @name %></h3>
+  <p><%= @description %></p>
+</div>
