@@ -20,7 +20,7 @@
 
     checkUserLoggedIn: (view) ->
       checkUser = App.request 'user:entity'
-      checkUser.fetch()
+
       App.execute "when:fetched", checkUser, =>
         if checkUser.get 'logged_in'
           @showAccountView(view, checkUser)

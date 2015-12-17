@@ -22,9 +22,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  def update
-
-  end
+  def update;end
 
   def destroy
     @movie.destroy

@@ -1,18 +1,18 @@
 class UserMovies::CreateUserMovie
   attr_reader :decorator
 
-  def self.call
+  def self.call(params)
     UserMovies::CreateUserMovie.new(params).call
   end
 
   def initialize(params)
-    new_user_movie = UserMovie.new
-    @decorator = UserMovies::UserMovieDecorator.new(new_user_movie, params)
+    user_movie = UserMovie.new
+    @decorator = UserMovies::UserMovieDecorator.new(user_movie, params)
   end
 
   def call
     decorator.assign_safe_params
-    decorator.assign_user_id
+    decorator.assign_movie_id
     decorator.save!
   end
 

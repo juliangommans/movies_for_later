@@ -1,9 +1,9 @@
 class UserMoviesController < ApplicationController
-  before_filter :fetch_user_movie, except: [:create, :index]
   respond_to :json
+  before_filter :fetch_user_movie, except: [:create, :index]
 
   def create
-    @user_movie = UserMovies::CreateUserMovie.new.call(params)
+    @user_movie = UserMovies::CreateUserMovie.call(params)
   end
 
   def index

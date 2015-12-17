@@ -4,6 +4,8 @@
 
     initialize: ->
       upcoming = App.request 'movie:entities', context: 'upcoming'
+      @currentUser = App.request 'user:entity'
+      console.log "users deeeets", @currentUser
 
       @layout = @getLayout()
       @listenTo @layout, 'show', =>
@@ -36,10 +38,18 @@
       newMovie = App.request 'new:movie:entity'
       newMovie.filterMovieData(movie)
       newMovie.save()
-      console.log "nu moovee?", newMovie
+
       userMovie = App.request 'new:user_movie:entity'
-      App.execute "when:fetched", userMovie, ->
-        userMovie.set movie_id: newMovie.id
+      App.execute "when:fetched", userMovie, =>
+        if newMovie.id?
+          params =
+            movie_id: newMovie.id
+        else
+          params =
+            api_id: newMovie.get('api_id')
+        params['user_id'] = @currentUser.id
+        userMovie.set user_movie: params
+        console.log "USER MOVIE", userMovie
         userMovie.save()
 
     getUpcoming: ->
@@ -58,6 +68,10 @@
 
     fetchMovies: (params, options) ->
       @results = App.request 'external:movie:entities', params
+      App.execute 'movie:list',
+        movies: @results
+        currentUser: @currentUser
+
 
       App.execute "when:fetched", @results, =>
         if options?

@@ -734,8 +734,8 @@ end
 
 options = {
   title: "MoviesForLater",
-  appname: "user_movies",
-  branchname: "show",
+  appname: "movie",
+  branchname: "list",
   routable: true,
   custom: "/backbone"
 }
