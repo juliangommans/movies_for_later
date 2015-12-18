@@ -1,7 +1,7 @@
 class Movies::MovieDecorator
   attr_reader :movie, :params
   SAFE_PARAMS = %w(
-    vote_count vote_average name description poster backdrop api_id
+    vote_count vote_average context title overview poster_path backdrop_path api_id
     )
 
   def initialize(movie, params)
@@ -18,10 +18,12 @@ class Movies::MovieDecorator
   end
 
   def assign_genres
-    params[:genre_ids].each do |g|
-      genre = Genre.find_by(genre_id: g)
-      x = MovieGenre.new(movie_id: movie.id, genre_id: genre.id)
-      x.save
+    if params[:genre_ids].present?
+      params[:genre_ids].each do |g|
+        genre = Genre.find_by(genre_id: g)
+        x = MovieGenre.new(movie_id: movie.id, genre_id: genre.id)
+        x.save
+      end
     end
   end
 
@@ -38,7 +40,7 @@ class Movies::MovieDecorator
   end
 
   def permit_params
-    params.require(:movie).permit(:movie, :vote_count, :release_date, :genre_ids, :vote_average, :name, :description, :poster, :backdrop, :api_id)
+    params.require(:movie).permit(:movie, :vote_count, :release_date, :genre_ids, :vote_average, :title, :overview, :poster_path, :backdrop_path, :api_id, :context)
   end
 
 end

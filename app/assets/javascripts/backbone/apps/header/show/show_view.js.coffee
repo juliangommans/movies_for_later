@@ -4,6 +4,7 @@
     template: 'header/show/header'
     regions:
       accountRegion: '#account-options'
+      searchRegion: '#search-box'
 
   class Show.Account extends App.Views.ItemView
     template: 'header/show/_account_options'

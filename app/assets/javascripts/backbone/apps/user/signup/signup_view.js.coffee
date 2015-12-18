@@ -15,8 +15,6 @@
       @model.set(data)
       @model.set
         user: data
-          # email: data.email
-          # password: data.password
       console.log "data", data
       @model.save({},
         success: (model, response, options) =>

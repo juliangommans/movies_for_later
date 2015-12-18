@@ -1,1 +1,1 @@
-attributes :id, :name, :description, :release_year, :poster, :backdrop, :api_id, :vote_count, :vote_average
+attributes :id, :title, :overview, :release_year, :poster_path, :backdrop_path, :api_id, :vote_count, :vote_average, :context

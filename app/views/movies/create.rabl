@@ -1,3 +1,3 @@
-object :movie
+object @movie
 
 extends('movies/base')

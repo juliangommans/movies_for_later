@@ -1,0 +1,10 @@
+<div class='movie-popover-box'data-toggle="popover" data-placement="bottom" data-content='<%= @overview %>'>
+  <% if @poster_path?: %>
+  <img src="http://image.tmdb.org/t/p/w92<%= @poster_path %>">
+  <p><%= @title %></p>
+  <% else: %>
+  <h3>No Poster</h3>
+  <p><%= @title %></p>
+  <% end %>
+
+ </div>

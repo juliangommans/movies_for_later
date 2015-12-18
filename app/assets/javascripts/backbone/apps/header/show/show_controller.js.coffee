@@ -19,16 +19,17 @@
       @layout.showRegion.show showView
 
     checkUserLoggedIn: (view) ->
-      checkUser = App.request 'user:entity'
-      checkUser.fetch()
-      App.execute "when:fetched", checkUser, =>
-        if checkUser.get 'logged_in'
-          @showAccountView(view, checkUser)
-        else
-          @showRegisterView(view, checkUser)
+      @currentUser = App.request 'user:entity'
 
-    showRegisterView: (view, checkUser) ->
-      showRegisterView = @getRegisterView(checkUser)
+      App.execute "when:fetched", @currentUser, =>
+        if @currentUser.get 'logged_in'
+          @showAccountView(view)
+        else
+          @showRegisterView(view)
+        @showSeachBox(view)
+
+    showRegisterView: (view) ->
+      showRegisterView = @getRegisterView()
       @listenTo showRegisterView, 'show:user:signup', ->
         App.execute 'user:signup'
 
@@ -37,10 +38,15 @@
 
       view.accountRegion.show showRegisterView
 
-    showAccountView: (view, checkUser) ->
-      showAccountView = @getAccountView(checkUser)
+    showAccountView: (view) ->
+      showAccountView = @getAccountView()
 
       view.accountRegion.show showAccountView
+
+    showSeachBox: (view) ->
+      App.execute 'show:search:box',
+        currentUser: @currentUser
+        region: view.searchRegion
 
     getLayout: ->
       new Show.Layout
@@ -48,8 +54,8 @@
     getShowView: ->
       new Show.Header
 
-    getRegisterView: (checkUser) ->
-      new Show.Register model: checkUser
+    getRegisterView: ->
+      new Show.Register model: @currentUser
 
-    getAccountView: (checkUser) ->
-      new Show.Account model: checkUser
+    getAccountView: ->
+      new Show.Account model: @currentUser
