@@ -4,18 +4,21 @@
 
     initialize: (options) ->
       { @currentUser, @movies } = options
-      @movies.fetch
-      console.log "List options", options
-
       @layout = @getLayout()
       @listenTo @layout, 'show', ->
         @listView()
+
       App.modalRegion.show @layout
-
-
 
     listView: ->
       listView = @getListView()
+      @listenTo listView, 'childview:show:movie:page', (args) ->
+        console.log "MODEL AND VIEW", args
+        App.execute 'movie:show',
+          region: @layout.modal
+          movie: args.model
+          currentUser: @currentUser
+          movies: @movies
 
       @layout.modal.show listView,
         loading:

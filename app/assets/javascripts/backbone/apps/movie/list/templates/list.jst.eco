@@ -1,13 +1,11 @@
-
-
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">Search Results</h4>
-    </div>
-    <div id="movie-list" class="modal-body">
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn cancel-button btn-default">Close</button>
-    </div>
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title">Search Results</h4>
+  </div>
+  <div id="movie-list" class="modal-body">
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn cancel-button btn-default">Close</button>
   </div>
 </div>
+

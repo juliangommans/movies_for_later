@@ -1,7 +1,7 @@
 class Movies::MovieDecorator
   attr_reader :movie, :params
   SAFE_PARAMS = %w(
-    vote_count vote_average context name description poster backdrop api_id
+    vote_count vote_average context title overview poster_path backdrop_path api_id
     )
 
   def initialize(movie, params)
@@ -40,7 +40,7 @@ class Movies::MovieDecorator
   end
 
   def permit_params
-    params.require(:movie).permit(:movie, :vote_count, :release_date, :genre_ids, :vote_average, :name, :description, :poster, :backdrop, :api_id, :context)
+    params.require(:movie).permit(:movie, :vote_count, :release_date, :genre_ids, :vote_average, :title, :overview, :poster_path, :backdrop_path, :api_id, :context)
   end
 
 end

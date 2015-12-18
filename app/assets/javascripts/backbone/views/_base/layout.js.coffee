@@ -6,10 +6,3 @@
 
     onRender: ->
       @showModal()
-
-    showModal: ->
-      $('#modal').modal 'show'
-
-    hideModal: ->
-      $('#modal').modal 'hide'
-      @destroy()

@@ -9,7 +9,7 @@
         @[key] = val
 
     remove: (args...) ->
-      console.log 'removing', @
+      # console.log 'removing', @
       _remove.apply @, args
 
     templateHelpers: ->
@@ -21,3 +21,17 @@
         url = '#' + url unless options.external
 
         "<a href="#{url}">#{@escape(name)}</a>"
+
+    showData: (args) ->
+      $(args.currentTarget).popover('show')
+
+    hideData: (args) ->
+      $(args.currentTarget).popover('hide')
+
+    showModal: ->
+      $('#modal').modal 'show'
+
+    hideModal: ->
+      $('#modal').modal 'hide'
+      @destroy()
+

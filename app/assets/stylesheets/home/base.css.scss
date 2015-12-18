@@ -10,6 +10,15 @@
   background-color: lightgray !important;
 }
 
+#search-box {
+  float: right;
+}
+
+#account-options {
+  width: 200px;
+  display: inline-block;
+}
+
 // carousel stuff
 
 .carousel {
@@ -42,7 +51,13 @@ h2 {
 // movie list-style
 
 .movie-list-items {
-  width: 94px;
-  margin: 3px;
+  width: 104px;
+  margin: 2px 5px;
+  padding-top: 6px;
+  padding-left: 5px;
   display: inline-block;
+}
+
+.movie-list-items:hover {
+  background-color: #ffeb3b;
 }
