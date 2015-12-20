@@ -10,7 +10,7 @@
   background-color: lightgray !important;
 }
 
-#search-box {
+#search-box-region {
   float: right;
 }
 
@@ -52,10 +52,13 @@ h2 {
 
 .movie-list-items {
   width: 104px;
+  height: 200px;
+  max-height: 200px;
   margin: 2px 5px;
   padding-top: 6px;
   padding-left: 5px;
   display: inline-block;
+  vertical-align: middle;
 }
 
 .movie-list-items:hover {

@@ -40,6 +40,9 @@
 
     showAccountView: (view) ->
       showAccountView = @getAccountView()
+      @listenTo showAccountView, 'show:user:movie', ->
+        App.execute 'user:show',
+          currentUser: @currentUser
 
       view.accountRegion.show showAccountView
 

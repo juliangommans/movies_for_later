@@ -1,0 +1,13 @@
+<h4>
+	<%= @title %>
+</h4>
+<% if @backdrop_path?: %>
+	<img src='http://image.tmdb.org/t/p/w300<%= @backdrop_path %>'>
+<% else if @poster_path?: %>
+	<img src='http://image.tmdb.org/t/p/w185<%= @poster_path %>'>
+<% else: %>
+	<h2> No Image Available</h2>
+<% end %>
+<p>
+<%= @overview %>
+</p>

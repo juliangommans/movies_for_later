@@ -1,0 +1,7 @@
+<h1> Your Movies </h1>
+
+<div>
+
+</div>
+
+<% console.log @ %>
