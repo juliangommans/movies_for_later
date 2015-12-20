@@ -20,7 +20,6 @@
     showView: ->
       showView = @getShowView()
       @listenTo showView, 'start:search', @search
-      @listenTo showView, 'get:upcoming', @getUpcoming
       @layout.homeRegion.show showView
 
     getLayout: ->

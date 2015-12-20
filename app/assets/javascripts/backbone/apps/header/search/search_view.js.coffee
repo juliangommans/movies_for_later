@@ -5,5 +5,7 @@
     className: 'search-box-wrapper'
     ui:
       search: '#search-button'
+      upcoming: '#upcoming-button'
     triggers:
       'click @ui.search': 'start:search'
+      'click @ui.upcoming': 'get:upcoming'

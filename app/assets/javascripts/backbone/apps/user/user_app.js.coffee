@@ -2,8 +2,9 @@
 
   class UserApp.Router extends Marionette.AppRouter
     appRoutes:
-      'user' : 'signup'
+      'user/signup' : 'signup'
       'user/sign_in': 'signin'
+      'user': 'show'
 
   API =
     signup: ->
@@ -12,12 +13,12 @@
       new UserApp.Signin.Controller
     signout: ->
       new UserApp.Singout.Controller
-    show: ->
-      new UserApp.Show.Controller
+    show: (options) ->
+      new UserApp.Show.Controller options
 
-  App.commands.setHandler 'user:show', ->
+  App.commands.setHandler 'user:show', (options)->
     App.navigate Routes.user_path()
-    API.show()
+    API.show(options)
 
   App.commands.setHandler 'user:signout', ->
     API.signout()

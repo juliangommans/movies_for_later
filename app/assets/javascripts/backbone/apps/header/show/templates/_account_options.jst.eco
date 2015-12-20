@@ -2,10 +2,10 @@
   <button data-toggle='dropdown' class='btn dropdown-toggle'>Your Account</button>
   <ul class='dropdown-menu'>
     <li>
-      <a href='#' class='sign-up'>Your Movies</a>
+      <a href='#' class='show-user'>Your Movies</a>
     </li>
     <li>
-      <a href='#' class='sign-in'>Edit Account</a>
+      <a href='#' class='edit-user'>Edit Account</a>
     </li>
     <li class='divider'></li>
     <li>
