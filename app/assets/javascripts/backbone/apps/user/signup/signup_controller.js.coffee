@@ -8,9 +8,8 @@
       App.execute 'when:fetched', newUser, =>
 
         signupView = @getSignupView(newUser)
-        # @listenTo signupView, 'save:user', ->
-          
-        #   signupView.hideModal()
+        @listenTo signupView, 'sign:in:user', ->
+          App.execute 'user:signin'
 
         App.modalRegion.show signupView
 

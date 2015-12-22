@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218002001) do
+ActiveRecord::Schema.define(version: 20151221013204) do
 
   create_table "genres", force: :cascade do |t|
     t.string   "name"
@@ -50,8 +50,9 @@ ActiveRecord::Schema.define(version: 20151218002001) do
     t.integer  "pre_watch_rating"
     t.integer  "post_watch_rating"
     t.string   "comment"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "watched",           default: false
   end
 
   add_index "user_movies", ["movie_id"], name: "index_user_movies_on_movie_id"
@@ -74,7 +75,6 @@ ActiveRecord::Schema.define(version: 20151218002001) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

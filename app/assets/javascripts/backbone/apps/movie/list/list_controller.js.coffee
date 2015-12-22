@@ -10,15 +10,24 @@
 
       App.modalRegion.show @layout
 
-    listView: ->
-      listView = @getListView()
-      @listenTo listView, 'childview:show:movie:page', (args) ->
-        console.log "MODEL AND VIEW", args
+    redirectUser: (args) ->
+      if @currentUser.logged_in
         App.execute 'movie:show',
           region: @layout.modal
           movie: args.model
           currentUser: @currentUser
           movies: @movies
+      else
+        App.execute 'user:signup'
+
+    listView: ->
+      listView = @getListView()
+      @listenTo listView, 'childview:show:movie:page', (args) ->
+        @redirectUser(args)
+
+      @listenTo listView, 'show:user:page', ->
+        App.execute 'user:show',
+          currentUser: @currentUser
 
       @layout.modal.show listView,
         loading:

@@ -1,0 +1,16 @@
+<div class="modal-dialog">
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Edit your profile</h4>
+    </div>
+    <div id='user-edit-region' class="modal-body">
+
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn submit-button btn-default">Save Changes</button>
+        <button type="button" class="btn cancel-button btn-default">Close</button>
+      </div>
+    </div>
+
+  </div>

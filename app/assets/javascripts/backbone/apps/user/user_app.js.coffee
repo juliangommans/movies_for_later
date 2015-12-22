@@ -4,6 +4,7 @@
     appRoutes:
       'user/signup' : 'signup'
       'user/sign_in': 'signin'
+      'user/edit': 'edit'
       'user': 'show'
 
   API =
@@ -15,6 +16,8 @@
       new UserApp.Singout.Controller
     show: (options) ->
       new UserApp.Show.Controller options
+    edit: (options) ->
+      new UserApp.Edit.Controller options
 
   App.commands.setHandler 'user:show', (options)->
     App.navigate Routes.user_path()
@@ -28,6 +31,9 @@
 
   App.commands.setHandler 'user:signup', ->
     API.signup()
+
+  App.commands.setHandler 'show:user:edit', (options) ->
+    API.edit(options)
 
   App.addInitializer ->
     new UserApp.Router

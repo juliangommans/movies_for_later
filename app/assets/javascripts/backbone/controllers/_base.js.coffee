@@ -39,3 +39,13 @@
         App.execute "show:loading", view, options
       else
         options.region.show view
+
+#### Custom controller methods for this movies app.
+
+    mergeObject: (obj1, obj2) ->
+      obj3 = {}
+      for attrname of obj1
+        obj3[attrname] = obj1[attrname]
+      for attrname of obj2
+        obj3[attrname] = obj2[attrname]
+      obj3

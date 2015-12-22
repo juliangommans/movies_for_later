@@ -5,7 +5,6 @@
     initialize: ->
       upcoming = App.request 'movie:entities', context: 'upcoming'
 
-
       @layout = @getLayout()
       @listenTo @layout, 'show', =>
         @showView()

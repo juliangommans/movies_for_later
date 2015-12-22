@@ -1,13 +1,53 @@
-<h4>
-	<%= @title %>
-</h4>
-<% if @backdrop_path?: %>
-	<img src='http://image.tmdb.org/t/p/w300<%= @backdrop_path %>'>
-<% else if @poster_path?: %>
-	<img src='http://image.tmdb.org/t/p/w185<%= @poster_path %>'>
-<% else: %>
-	<h2> No Image Available</h2>
-<% end %>
-<p>
-<%= @overview %>
-</p>
+<div class='row'>
+  <div class='col-xs-4'>
+    <h3>
+    	<%= @title %> (<%= @release_year %>)
+    </h3>
+    <% if @backdrop_path?: %>
+    	<img src='http://image.tmdb.org/t/p/w300<%= @backdrop_path %>'>
+    <% else if @poster_path?: %>
+    	<img src='http://image.tmdb.org/t/p/w185<%= @poster_path %>'>
+    <% else: %>
+    	<h2> No Image Available</h2>
+    <% end %>
+  </div>
+  <div class='col-xs-4'>
+    <h4>
+      <% if @genres?: %>
+      (
+      <% for genre in @genres: %>
+      <%= genre.name %>
+      <% end %>
+      )
+      <% end %>
+    </h4>
+    <p>
+    <%= @overview %>
+    </p>
+    <p>
+      <% unless @vote_average is 0: %>
+      Rating: <%= @vote_average %>/10
+      <% end %>
+    </p>
+
+  </div>
+  <div class='col-xs-4'>
+    <% if @pre_watch_rating?: %>
+    <h4>
+      Your Pre Watch Rating: <%= @pre_watch_rating %>/5
+    </h4>
+    <% end %>
+    <% if @post_watch_rating?: %>
+    <h4>
+      Your Post Watch Rating: <%= @post_watch_rating %>/5
+    </h4>
+    <% end %>
+    <% if @comment?: %>
+    <p>Your Comments</p>
+    <p><%= @comment %></p>
+    <% end %>
+    <button id='watch-movie' class='btn'>Watched?</button>
+    <button id='remove-movie' class='btn'>Remove</button>
+  </div>
+</div>
+

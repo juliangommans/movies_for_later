@@ -13,6 +13,7 @@
     signIn: ->
       data = @ui.form.serializeObject()
       @model.set(data)
+      console.log "DATA", data
       @model.set
         user: data
       @model.save({},
