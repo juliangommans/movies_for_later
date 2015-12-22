@@ -688,7 +688,7 @@ end
   class #{@capbranch}.Layout extends App.Views.Layout
     template: '#{@appname}/#{@branchname}/#{@branchname}_layout'
     regions:
-      #{@branchname}Region: '\##{@branchname}-region'"
+      #{@branchname}Region: '\##{@appname}-#{@branchname}-region'"
   end
 
   def create_entities
@@ -734,8 +734,8 @@ end
 
 options = {
   title: "MoviesForLater",
-  appname: "header",
-  branchname: "search",
+  appname: "movie",
+  branchname: "watch",
   routable: true,
   custom: "/backbone"
 }

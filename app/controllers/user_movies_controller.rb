@@ -16,7 +16,13 @@ class UserMoviesController < ApplicationController
 
   def update;end
 
-  def destroy;end
+  def destroy
+    if @user_movie.destroy
+      render 'create'
+    else
+      raise "Could not detroy the UserMovie"
+    end
+  end
 
   private
 

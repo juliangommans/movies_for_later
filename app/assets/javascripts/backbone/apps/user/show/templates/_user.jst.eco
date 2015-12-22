@@ -1,7 +1,8 @@
-<h1> Your Movies </h1>
-
-<div>
-
-</div>
-
-<% console.log @ %>
+<ul class="nav nav-tabs">
+  <li id='saved-movies' class='active'>
+    <a href='#'> Your Saved Movies </a>
+  </li>
+  <li id='watched-movies'>
+    <a href='#'> Your Watched Movies </a>
+  </li>
+</ul>

@@ -6,9 +6,12 @@
       cancel: '.cancel-button'
       submit: '.submit-button'
       form: '#signup-form'
+      signin: '.sign-in-button'
     events:
       'click @ui.cancel': 'hideModal'
       'click @ui.submit': 'saveUser'
+    triggers:
+      'click @ui.signin': 'sign:in:user'
 
     saveUser: ->
       data = @ui.form.serializeObject()

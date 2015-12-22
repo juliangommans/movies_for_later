@@ -15,8 +15,13 @@
     template: 'movie/list/list'
     childView: List.Movie
     childViewContainer: '#movie-list'
+    ui:
+      cancel: '.cancel-button'
+      user: '.user-show-button'
     events:
-      'click .cancel-button': 'hideModal'
+      'click @ui.cancel': 'hideModal'
+    triggers:
+      'click @ui.user': 'show:user:page'
 
   class List.Layout extends App.Views.ModalLayout
     template: 'movie/list/layout'
