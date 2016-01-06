@@ -1,7 +1,7 @@
 class UserMovies::UserMovieDecorator
   attr_reader :user_movie, :params
   SAFE_PARAMS = %w(
-    pre_watch_rating post_watch_rating comment user_id
+    pre_watch_rating post_watch_rating comment user_id watched
     )
 
   def initialize(user_movie, params)
@@ -21,6 +21,10 @@ class UserMovies::UserMovieDecorator
     end
   end
 
+  def watched?
+    user_movie.watched = true
+  end
+
   def save!
     if user_movie.changed?
       user_movie.save
@@ -38,7 +42,7 @@ class UserMovies::UserMovieDecorator
   end
 
   def permit_params
-    params.require(:user_movie).permit(:user_movie, :movie_id, :user_id, :pre_watch_rating, :post_watch_rating, :comment, :api_id)
+    params.require(:user_movie).permit(:id, :watched, :user_movie, :movie_id, :user_id, :pre_watch_rating, :post_watch_rating, :comment, :api_id)
   end
 
 end

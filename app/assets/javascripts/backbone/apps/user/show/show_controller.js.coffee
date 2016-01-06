@@ -36,12 +36,12 @@
 
     filterPostMovies: (movies) ->
       filtered = movies.filter( (movie) ->
-        return movie if movie.post_watch_rating? )
+        return movie if movie.get('watched') )
       @showFilteredMovies(filtered)
 
     filterPreMovies: (movies) ->
       filtered = movies.filter( (movie) ->
-        return movie unless movie.post_watch_rating? )
+        return movie unless movie.get('watched') )
       @showFilteredMovies(filtered)
 
     showFilteredMovies: (movies) ->

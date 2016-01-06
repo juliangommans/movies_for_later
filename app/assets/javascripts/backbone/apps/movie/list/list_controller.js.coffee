@@ -11,7 +11,7 @@
       App.modalRegion.show @layout
 
     redirectUser: (args) ->
-      if @currentUser.logged_in
+      if @currentUser.get('logged_in')
         App.execute 'movie:show',
           region: @layout.modal
           movie: args.model
@@ -21,20 +21,28 @@
         App.execute 'user:signup'
 
     listView: ->
-      listView = @getListView()
-      @listenTo listView, 'childview:show:movie:page', (args) ->
-        @redirectUser(args)
+      App.execute "when:fetched", @movies, =>
+        listView = @getListView()
+        @listenTo listView, 'childview:show:movie:page', (args) ->
+          @redirectUser(args)
 
-      @listenTo listView, 'show:user:page', ->
-        App.execute 'user:show',
-          currentUser: @currentUser
+        @listenTo listView, 'show:user:page', ->
+          App.execute 'user:show',
+            currentUser: @currentUser
 
-      @layout.modal.show listView,
-        loading:
-          entities: @movies
+        @layout.modal.show listView,
+          loading:
+            entities: @movies
+
+    rejectLowScoreMovies: ->
+      leftovers = @movies.reject( (movie) ->
+        return movie unless movie.get('vote_count') >= 10
+        )
+      console.log leftovers
+      new Backbone.Collection leftovers
 
     getLayout: ->
       new List.Layout
 
     getListView: ->
-      new List.MovieList collection: @movies
+      new List.MovieList collection: @rejectLowScoreMovies()
