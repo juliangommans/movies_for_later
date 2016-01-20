@@ -5,7 +5,7 @@ gem 'rails'
 gem 'unicorn'
 gem 'thin'
 gem 'pg'
-
+gem 'rb-fsevent'
 
 
 # Use SCSS for stylesheets
