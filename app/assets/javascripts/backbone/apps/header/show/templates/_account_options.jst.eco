@@ -2,6 +2,10 @@
   <button data-toggle='dropdown' class='btn dropdown-toggle'>Your Account</button>
   <ul class='dropdown-menu'>
     <li>
+      <a href='#' class='go-home'>Home</a>
+    </li>
+    <li class='divider'></li>
+    <li>
       <a href='#' class='show-user'>Your Movies</a>
     </li>
     <li>

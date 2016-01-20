@@ -48,6 +48,9 @@
         App.execute 'show:user:edit',
           currentUser: @currentUser
 
+      @listenTo showAccountView, 'go:home', ->
+        App.request 'home:show'
+
       view.accountRegion.show showAccountView
 
     showSeachBox: (view) ->

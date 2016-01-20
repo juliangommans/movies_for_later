@@ -7,14 +7,24 @@
       @watchView()
 
     submitChanges: (args) ->
-      console.log "args?", args
-      args.model.save()
+      model = args.model
+      model.set
+        post_watch_rating: $('#select-rating').val()
+        watched: true
+      args.model.save({},
+          success: (model, response, options) =>
+            console.log "you've watched =>", model
+            App.vent.trigger "user:movie:list:change"
+            $('#modal').modal 'hide'
+            @watch.destroy()
+          error: (model, xhr, response) ->
+            console.log "ERROR - MOVIE MALFUNKTION", model, xhr, response
+          )
 
     watchView: ->
-      watchView = @getWatchView()
-      @listenTo watchView, 'submit:movie:changes', @submitChanges
-
-      App.modalRegion.show watchView
+      @watch = @getWatchView()
+      @listenTo @watch, 'submit:movie:changes', @submitChanges
+      App.modalRegion.show @watch
 
     getWatchView: ->
       new Watch.Movie model: @movie

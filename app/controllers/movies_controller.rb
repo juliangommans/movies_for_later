@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   respond_to :json
-  before_filter :fetch_movie, except: [:create, :index]
+  before_filter :fetch_movie, except: [:create, :index, :refresh_upcoming]
 
   def create
     if check_validity
@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
 
   def index
     if params[:context].present?
-      @movies = Movie.where(context: 'upcoming')
+      @movies = Movie.where(context: 'upcoming').last(20)
     else
       if current_user.present?
         @movies = Movie.where()
@@ -28,6 +28,17 @@ class MoviesController < ApplicationController
     @movie.destroy
   end
 
+  def refresh_upcoming
+    movies = Movie.where(context: 'upcoming')
+    if movies.length > 0
+      movies.each do |movie|
+        movie.context = ''
+        movie.save!
+      end
+    end
+
+  end
+
   private
 
   def check_validity
@@ -39,7 +50,7 @@ class MoviesController < ApplicationController
   end
 
   def vote_count_check
-    if params[:vote_count] < 10 and params[:context] != 'upcoming'
+    if params[:vote_count] < 1 and params[:context] != 'upcoming'
       return false
     else
       return true

@@ -1,6 +1,6 @@
 class UserMoviesController < ApplicationController
   respond_to :json
-  before_filter :fetch_user_movie, except: [:create, :index]
+  before_filter :fetch_user_movie, except: [:create, :update, :index]
 
   def create
     @user_movie = UserMovies::CreateUserMovie.call(params)
@@ -14,7 +14,10 @@ class UserMoviesController < ApplicationController
 
   def show;end
 
-  def update;end
+  def update
+    @user_movie = UserMovies::UpdateUserMovie.call(params)
+    render 'create'
+  end
 
   def destroy
     if @user_movie.destroy

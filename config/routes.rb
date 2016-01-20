@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/home', to: "home#show"
   get '/user', to: "user#show"
+  post '/movies/refresh_upcoming', to: "movies#refresh_upcoming"
 
   devise_for :users, controllers: {
     registrations: "registrations",

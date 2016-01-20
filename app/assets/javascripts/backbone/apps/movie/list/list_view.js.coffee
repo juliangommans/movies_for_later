@@ -11,8 +11,12 @@
     triggers:
       'click @ui.movie': 'show:movie:page'
 
+  class List.Empty extends App.Views.ItemView
+    template: 'movie/list/empty'
+
   class List.MovieList extends App.Views.CompositeView
     template: 'movie/list/list'
+    emptyView: List.Empty
     childView: List.Movie
     childViewContainer: '#movie-list'
     ui:
