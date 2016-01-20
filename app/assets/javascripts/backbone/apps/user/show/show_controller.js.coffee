@@ -14,14 +14,27 @@
         loading:
           entities: @currentUser
 
+      App.vent.on 'user:movie:list:change', =>
+        @currentUser = App.request 'user:entity'
+        App.execute "when:fetched", [@currentUser], =>
+          @filterPreMovies(@buildMovies())
+          @showView()
+
+      # App.vent.on 'user:watched:list:change', =>
+      #   @currentUser = App.request 'user:entity'
+      #   App.execute "when:fetched", [@currentUser], =>
+      #     @filterPostMovies(@buildMovies())
+      #     @showView()
+
     buildMovies: ->
       movies = @currentUser.get('movies')
       user_movies = @currentUser.get('user_movies')
       combinedMovies = []
-      for i in [0..movies.length-1]
-        movie = @mergeObject(movies[i],user_movies[i])
-        model = new App.Entities.Model movie
-        combinedMovies.push(model)
+      unless movies.length < 1
+        for i in [0..movies.length-1]
+          movie = @mergeObject(movies[i],user_movies[i])
+          model = new App.Entities.Model movie
+          combinedMovies.push(model)
       new Backbone.Collection combinedMovies
 
     addValues: (movie) ->
@@ -67,6 +80,7 @@
           currentUser: @currentUser
           movie: args.model
       @listenTo showMoviesView, 'childview:remove:movie', @remove
+
 
       @layout.moviesRegion.show showMoviesView
 

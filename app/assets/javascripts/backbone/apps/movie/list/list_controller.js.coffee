@@ -27,8 +27,9 @@
           @redirectUser(args)
 
         @listenTo listView, 'show:user:page', ->
-          App.execute 'user:show',
-            currentUser: @currentUser
+          App.execute 'user:show'
+          $('#modal').modal 'hide'
+          listView.destroy()
 
         @layout.modal.show listView,
           loading:
@@ -36,7 +37,7 @@
 
     rejectLowScoreMovies: ->
       leftovers = @movies.reject( (movie) ->
-        return movie unless movie.get('vote_count') >= 10
+        return movie unless movie.get('vote_count') >= 1
         )
       console.log leftovers
       new Backbone.Collection leftovers

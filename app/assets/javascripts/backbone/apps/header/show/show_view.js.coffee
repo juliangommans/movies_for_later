@@ -8,9 +8,10 @@
 
   class Show.Account extends App.Views.ItemView
     template: 'header/show/_account_options'
-    triggers: 
+    triggers:
       'click .show-user': 'show:user:movie'
       'click .edit-user': 'show:edit:user'
+      'click .go-home': "go:home"
 
   class Show.Register extends App.Views.ItemView
     template: 'header/show/_register_account'

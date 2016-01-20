@@ -25,13 +25,17 @@
 
       @fetchMovies(params, 'upcoming')
 
-    search: -> 
+    search: ->
       query = $('#search-box').val()
-      params =
-        url: 'search/movie'
-        query: query
+      console.log "query", query
+      if query.length > 0
+        params =
+          url: 'search/movie'
+          query: query
 
-      @fetchMovies(params)
+        @fetchMovies(params)
+      else
+        alert "Please enter something into the search box"
 
     fetchMovies: (params, options) ->
       @results = App.request 'external:movie:entities', params
@@ -44,7 +48,19 @@
           @results.each((result) ->
             result.set context: 'upcoming'
             )
+          # @refreshUpcomingMovies()
         @saveMoviesToDb()
+
+    # refreshUpcomingMovies: ->
+    #   $.ajax
+    #     url: "/movies/refresh_upcoming"
+    #     type: "POST"
+    #     success: (data) =>
+    #       console.log "results are", data
+    #     error: (a,b,c) ->
+    #       console.log "ERROR are", a,b,c
+
+
 
     getSearchView: ->
       new Search.SearchBox

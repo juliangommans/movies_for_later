@@ -22,8 +22,10 @@
       @model.save({},
         success: (model, response, options) =>
           console.log "we saved the whales", model, response, options
+          App.vent.trigger 'user:status:change'
           @hideModal()
         error: (model, xhr, response) ->
+          alert "There was an error signing-up"
           console.log "THEYRE ALL DEAD", model, xhr, response
         )
 
