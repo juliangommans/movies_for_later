@@ -6,6 +6,8 @@ gem 'unicorn'
 gem 'thin'
 gem 'pg'
 
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails'
 gem 'bootstrap-sass'
@@ -57,6 +59,9 @@ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+#heroku
+gem 'rails_12factor', group: :production
 
 # Use unicorn as the app server
 # gem 'unicorn'
