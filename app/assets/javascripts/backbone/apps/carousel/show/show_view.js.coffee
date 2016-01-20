@@ -3,8 +3,8 @@
   class Show.Movie extends App.Views.ItemView
     template: 'carousel/show/_movie'
     className: 'item carousel-movie-item'
-    triggers:
-      'click .carousel-images': 'load:carousel:movie'
+    # triggers:
+    #   'click .carousel-images': 'load:carousel:movie'
 
   class Show.Carousel extends App.Views.CompositeView
     template: 'carousel/show/show_carousel'

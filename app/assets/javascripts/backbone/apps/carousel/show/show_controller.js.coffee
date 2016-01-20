@@ -8,10 +8,11 @@
       carouselView = @getCarouselView(collection)
       @listenTo carouselView, 'show', ->
         $($('.carousel-movie-item')[0]).addClass('active')
-      @listenTo carouselView, 'childview:load:carousel:movie', (args) ->
-        App.execute 'movie:show',
-          region: App.modalRegion
-          movie: args.model
+      # @listenTo carouselView, 'childview:load:carousel:movie', (args) ->
+        # App.execute 'movie:show',
+        #   region: App.modalRegion
+        #   movie: args.model
+        # $('#modal').modal 'show'
 
       view.carouselRegion.show carouselView
 

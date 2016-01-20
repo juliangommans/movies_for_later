@@ -4,7 +4,8 @@
 
     initialize: (options) ->
       { @region, @currentUser, @movie, @movies } = options
-      console.log @movie, @region
+      @currentUser or= App.request 'user:entity'
+
       @movie.set
         backdrop: @movie.getImageUrl(
           type: 'backdrop'
@@ -30,13 +31,15 @@
       userMovie = App.request 'new:user_movie:entity'
       App.execute "when:fetched", userMovie, =>
         params['user_id'] = @currentUser.id
-        params['api_id'] = @movie.get('id')
+        if @movie.get('api_id')?
+          params['api_id'] = @movie.get('api_id')
+        else
+          params['api_id'] = @movie.get('id')
         userMovie.set user_movie: params
         userMovie.save({},
           success: (model, response, options) =>
             console.log "you saved the movie", model, response, options
             @back()
-            App.vent.trigger 'user:movie:list:change'
           error: (model, xhr, response) ->
             console.log "ERROR - MOVIE MALFUNKTION", model, xhr, response
           )
@@ -46,6 +49,7 @@
         App.execute 'movie:list',
           movies: @movies
           currentUser: @currentUser
+          App.vent.trigger 'user:movie:list:change'
       else
         App.execute 'user:show'
 
